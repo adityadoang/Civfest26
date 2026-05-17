@@ -1,349 +1,402 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events - Civfest PNJ 2026</title>
-    <style>body:not(.js-loaded) { visibility: hidden; }</style>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <header class="navbar">
-      <div class="container nav-container">
-        <a href="/index.html" class="logo" style="display: flex; align-items: center; gap: 0.85rem; text-decoration: none;">
-          <img src="/logo.png" alt="Civfest" style="height: 75px; width: auto; filter: drop-shadow(0 2px 5px rgba(134,190,39,0.25)); transform: scale(1.7); transform-origin: left center;" />
-          <div style="display: flex; flex-direction: column; line-height: 1.1; text-decoration: none;">
-            <span style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-main); margin-bottom: 0;">CIVFEST <span style="color: var(--color-primary);">2026</span></span>
-            <span style="font-size: 0.65rem; font-weight: 600; color: var(--color-text-muted); letter-spacing: 0;">Civil Engineering Festival</span>
-          </div>
-        </a>
-        <nav class="nav-links">
-          <a href="/index.html" class="nav-item">Home</a>
-          <a href="/events.html" class="nav-item active">Events</a>
-          <a href="/past-events.html" class="nav-item">Past Events</a>
-          <button class="theme-btn" aria-label="Toggle Theme"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-          <a href="/register.html" class="btn-register">Register Now</a>
-        </nav>
-        <button class="mobile-menu-toggle">☰</button>
-      </div>
-    </header>
-
-    <main>
-      <section class="page-header animate-fade-up">
-        <div class="container">
-          <h1>Explore Our Events</h1>
-          <p>Discover the full lineup of our festival, from the opening ceremony to exciting competitions, national seminars, and the grand closing.</p>
-        </div>
-      </section>
-
-      <section class="info-section pt-0">
-        <div class="container">
-          <div class="glass-grid-4">
-            <!-- Opening -->
-            <a href="#" class="glass-card animate-fade-up delay-100" data-open-modal="modal-opening">
-              <div class="comp-logo-box">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.597 3.2A1 1 0 0 0 7.04 4.289a3.49 3.49 0 0 1 .057 1.795 3.448 3.448 0 0 1-.84 1.575.999.999 0 0 0-.077.094c-.596.817-3.96 5.6-.941 10.762l.03.049a7.73 7.73 0 0 0 2.917 2.602 7.617 7.617 0 0 0 3.772.829 8.06 8.06 0 0 0 3.986-.975 8.185 8.185 0 0 0 3.04-2.864c1.301-2.2 1.184-4.556.588-6.441-.583-1.848-1.68-3.414-2.607-4.102a1 1 0 0 0-1.594.757c-.067 1.431-.363 2.551-.794 3.431-.222-2.407-1.127-4.196-2.224-5.524-1.147-1.39-2.564-2.3-3.323-2.788a8.487 8.487 0 0 1-.432-.287Z"></path></svg>
-              </div>
-              <h3>Opening</h3>
-              <p>Kickstart the Civil Engineering Festival with engaging talks and inspiring ceremonies.</p>
-              <div class="learn-more-link">View Detail</div>
-            </a>
-            
-            <!-- Competitions -->
-            <a href="#" class="glass-card animate-fade-up delay-200" data-open-modal="modal-competitions">
-              <div class="comp-logo-box">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-              </div>
-              <h3>Competitions</h3>
-              <p>Join the national competitions and enhance your skills in Civil Engineering.</p>
-              <div class="learn-more-link">View Detail</div>
-            </a>
-            
-            <!-- National Seminar -->
-            <a href="#" class="glass-card animate-fade-up delay-300" data-open-modal="modal-seminar">
-              <div class="comp-logo-box">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
-              </div>
-              <h3>National Seminar</h3>
-              <p>Gain insights from industry experts on green architecture and infrastructure resilience.</p>
-              <div class="learn-more-link">View Detail</div>
-            </a>
-            
-            <!-- Closing -->
-            <a href="#" class="glass-card animate-fade-up delay-100" data-open-modal="modal-closing">
-              <div class="comp-logo-box">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 18c0 1.1046-.89543 2-2 2s-2-.8954-2-2 .89543-2 2-2 2 .8954 2 2Zm0 0V6.33333L18 4v11.6667M8 10.3333 18 8m0 8c0 1.1046-.8954 2-2 2s-2-.8954-2-2 .8954-2 2-2 2 .8954 2 2Z"/>
-                </svg>
-              </div>
-              <h3>Closing</h3>
-              <p>Celebrate the winners and conclude the festival with spectacular performances!</p>
-              <div class="learn-more-link">View Detail</div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Modals Definition -->
-      <div class="modal-overlay" id="modal-opening">
-        <div class="modal-content">
-          <button class="modal-close" data-close-modal>&times;</button>
-          <h2 class="modal-title">Opening Ceremony</h2>
-          <div class="modal-body">
-            <p>Welcome to Civfest 2026! The opening ceremony will introduce the grand theme "Building Infrastructure Resilience in Facing Future Challenges". Expect keynote speakers, an overview of the ongoing events, and networking sessions.</p>
-            <div class="timeline-gallery" style="margin-bottom: 1.5rem;">
-              <div class="gallery-img" style="background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&auto=format&fit=crop') center/cover;"></div>
-              <div class="gallery-img" style="background: url('https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&auto=format&fit=crop') center/cover;"></div>
-            </div>
-            <p><strong>Date & Time:</strong> TBA</p>
-            <p><strong>Location:</strong> Main Hall Politeknik Negeri Jakarta</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal: Competitions -->
-      <div class="modal-overlay" id="modal-competitions">
-        <div class="modal-content">
-          <button class="modal-close" data-close-modal id="close-modal-competitions">&times;</button>
-          <h2 class="modal-title">Competitions</h2>
-          
-          <div class="modal-body">
-            <!-- List of Competitions -->
-            <div id="comps-list">
-              <p style="margin-bottom: 2rem;">Civfest presents prestigious competitions to develop student creativity. Choose a competition to view details:</p>
-              <div class="comp-list-grid">
-                <div class="comp-item-card" data-comp="nbmdc">
-                  <div class="comp-item-logo-placeholder"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                  <div class="comp-item-text">
-                    <h4>NBMDC</h4>
-                    <span>National Building Mockup Design</span>
-                  </div>
-                  <div class="comp-item-arrow">&rarr;</div>
-                </div>
-                <div class="comp-item-card" data-comp="nptc">
-                  <div class="comp-item-logo-placeholder"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                  <div class="comp-item-text">
-                    <h4>NPTC</h4>
-                    <span>National Project Tender</span>
-                  </div>
-                  <div class="comp-item-arrow">&rarr;</div>
-                </div>
-                <div class="comp-item-card" data-comp="nbdc">
-                  <div class="comp-item-logo-placeholder"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                  <div class="comp-item-text">
-                    <h4>NBDC</h4>
-                    <span>National Bridge Design</span>
-                  </div>
-                  <div class="comp-item-arrow">&rarr;</div>
-                </div>
-                <div class="comp-item-card" data-comp="ncc">
-                  <div class="comp-item-logo-placeholder"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                  <div class="comp-item-text">
-                    <h4>NCC</h4>
-                    <span>National Concrete Competition</span>
-                  </div>
-                  <div class="comp-item-arrow">&rarr;</div>
-                </div>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Explore Civfest PNJ 2026 events - Opening Ceremony, National Competitions (NBC, NBDC, NPTC, NCC, NBMDC), National Seminar, and the Grand Closing Night."/>
+<title>Events - Civfest PNJ 2026</title>
+<link href="/logo.png" rel="icon" type="image/png"/>
+<style>body:not(.js-loaded) { visibility: hidden; }</style>
+</head>
+<body>
+<!-- Navbar -->
+<header class="navbar">
+<div class="container nav-container">
+<a class="logo" href="/index.html" style="display: flex; align-items: center; gap: 0.85rem; text-decoration: none;">
+<img alt="Civfest" src="/logo.png" style="height: 75px; width: auto; filter: drop-shadow(0 2px 5px rgba(134,190,39,0.25)); transform-origin: left center;"/>
+<div style="display: flex; flex-direction: column; line-height: 1.1; text-decoration: none;">
+<span style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-main); margin-bottom: 0;">CIVFEST <span style="color: var(--color-primary);">2026</span></span>
+<span style="font-size: 0.65rem; font-weight: 600; color: var(--color-text-muted); letter-spacing: 0;">Civil Engineering Festival</span>
+</div>
+</a>
+<nav class="nav-links">
+<a class="nav-item" href="/index.html">Home</a>
+<a class="nav-item active" href="/events.html">Events</a>
+<a class="nav-item" href="/past-events.html">Past Events</a>
+<button aria-label="Toggle Theme" class="theme-btn"><svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg></button>
+<a class="btn-register" href="/register.html">Register Now</a>
+</nav>
+<button class="mobile-menu-toggle">☰</button>
+</div>
+</header>
+<main>
+<section class="page-header animate-fade-up">
+<div class="container">
+<h1>Explore Our Events</h1>
+<p>Discover the full lineup of our festival, from the opening ceremony to exciting competitions, national seminars, and the grand closing.</p>
+</div>
+</section>
+<section class="info-section pt-0">
+<div class="container">
+<div class="glass-grid-4">
+<!-- Opening -->
+<a class="glass-card animate-fade-up delay-100" data-open-modal="modal-opening" href="#">
+<div class="comp-logo-box">
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="48"><path d="M8.597 3.2A1 1 0 0 0 7.04 4.289a3.49 3.49 0 0 1 .057 1.795 3.448 3.448 0 0 1-.84 1.575.999.999 0 0 0-.077.094c-.596.817-3.96 5.6-.941 10.762l.03.049a7.73 7.73 0 0 0 2.917 2.602 7.617 7.617 0 0 0 3.772.829 8.06 8.06 0 0 0 3.986-.975 8.185 8.185 0 0 0 3.04-2.864c1.301-2.2 1.184-4.556.588-6.441-.583-1.848-1.68-3.414-2.607-4.102a1 1 0 0 0-1.594.757c-.067 1.431-.363 2.551-.794 3.431-.222-2.407-1.127-4.196-2.224-5.524-1.147-1.39-2.564-2.3-3.323-2.788a8.487 8.487 0 0 1-.432-.287Z"></path></svg>
+</div>
+<h3>Opening</h3>
+<p>Kickstart the Civil Engineering Festival with engaging talks and inspiring ceremonies.</p>
+<div class="learn-more-link">View Detail</div>
+</a>
+<!-- Competitions -->
+<a class="glass-card animate-fade-up delay-200" data-open-modal="modal-competitions" href="#">
+<div class="comp-logo-box">
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="48"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+</div>
+<h3>Competitions</h3>
+<p>Join the national competitions and enhance your skills in Civil Engineering.</p>
+<div class="learn-more-link">View Detail</div>
+</a>
+<!-- National Seminar -->
+<a class="glass-card animate-fade-up delay-300" data-open-modal="modal-seminar" href="#">
+<div class="comp-logo-box">
+<svg fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="48"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+</div>
+<h3>National Seminar</h3>
+<p>Gain insights from industry experts on green architecture and infrastructure resilience.</p>
+<div class="learn-more-link">View Detail</div>
+</a>
+<!-- Closing -->
+<a class="glass-card animate-fade-up delay-100" data-open-modal="modal-closing" href="#">
+<div class="comp-logo-box">
+<svg aria-hidden="true" fill="none" height="48" viewbox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 18c0 1.1046-.89543 2-2 2s-2-.8954-2-2 .89543-2 2-2 2 .8954 2 2Zm0 0V6.33333L18 4v11.6667M8 10.3333 18 8m0 8c0 1.1046-.8954 2-2 2s-2-.8954-2-2 .8954-2 2-2 2 .8954 2 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3>Closing</h3>
+<p>Celebrate the winners and conclude the festival with spectacular performances!</p>
+<div class="learn-more-link">View Detail</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Modals Definition -->
+<div class="modal-overlay" id="modal-opening">
+<div class="modal-content">
+<button class="modal-close" data-close-modal="">×</button>
+<h2 class="modal-title">Opening Ceremony</h2>
+<div class="modal-body">
+<p>Welcome to Civfest 2026! The opening ceremony will introduce the grand theme "Transforming the Future through Sustainable Green Infrastructure Innovation
+". Expect keynote speakers, an overview of the ongoing events, and networking sessions.</p>
+<div class="timeline-gallery" style="margin-bottom: 1.5rem;">
+<div class="gallery-img" style=""></div>
+<div class="gallery-img" style=""></div>
+</div>
+<p><strong>Date &amp; Time:</strong> TBA</p>
+<p><strong>Location:</strong> Lapangan Pudir</p>
+</div>
+</div>
+</div>
+<!-- Modal: Competitions -->
+<div class="modal-overlay" id="modal-competitions">
+<div class="modal-content">
+<button class="modal-close" data-close-modal="" id="close-modal-competitions">×</button>
+<h2 class="modal-title">Competitions</h2>
+<div class="modal-body">
+<!-- List of Competitions -->
+<div id="comps-list">
+<p style="margin-bottom: 2rem;">Civfest presents prestigious competitions to develop student creativity. Choose a competition to view details:</p>
+<div class="comp-list-grid">
                 <div class="comp-item-card" data-comp="nbc">
-                  <div class="comp-item-logo-placeholder"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                  <div class="comp-item-text">
-                    <h4>NBC</h4>
-                    <span>National BIM Competition</span>
-                  </div>
-                  <div class="comp-item-arrow">&rarr;</div>
-                </div>
+<div class="comp-item-logo-placeholder"><img alt="NBC Logo" src="/lombatra/NBC.png"/></div>
+<div class="comp-item-text">
+<h4>NBC</h4>
+<span>National BIM Competition</span>
+</div>
+<div class="comp-item-arrow">→</div>
+</div>
+                <div class="comp-item-card" data-comp="nbdc">
+<div class="comp-item-logo-placeholder"><img alt="NBDC Logo" src="/lombatra/NBDC.png"/></div>
+<div class="comp-item-text">
+<h4>NBDC</h4>
+<span>National Bridge Design</span>
+</div>
+<div class="comp-item-arrow">→</div>
+</div>
+                <div class="comp-item-card" data-comp="nptc">
+<div class="comp-item-logo-placeholder"><img alt="NPTC Logo" src="/lombatra/NPTC.png" style="transform: scale(1.5);"/></div>
+<div class="comp-item-text">
+<h4>NPTC</h4>
+<span>National Project Tender</span>
+</div>
+<div class="comp-item-arrow">→</div>
+</div>
+                <div class="comp-item-card" data-comp="ncc">
+<div class="comp-item-logo-placeholder"><img alt="NCC Logo" src="/lombatra/NCC.png" style="transform: scale(1.5);"/></div>
+<div class="comp-item-text">
+<h4>NCC</h4>
+<span>National Concrete Competition</span>
+</div>
+<div class="comp-item-arrow">→</div>
+</div>
+                <div class="comp-item-card" data-comp="nbmdc">
+<div class="comp-item-logo-placeholder"><img alt="NBMDC Logo" src="/lombatra/NBMDC.png" style="transform: scale(1.5);"/></div>
+<div class="comp-item-text">
+<h4>NBMDC</h4>
+<span>National Building Mockup Design</span>
+</div>
+<div class="comp-item-arrow">→</div>
+</div>
               </div>
-            </div>
-
-            <!-- Detail View -->
-            <div id="comp-detail-view" style="display: none;">
-              <button id="comp-back-btn" class="btn-secondary" style="padding: 0.4rem 1rem; margin-bottom: 2rem; font-size: 0.8rem;">&larr; Back to List</button>
-              
-              <!-- NBMDC -->
-              <div class="comp-detail-content" id="detail-nbmdc" style="display: none;">
-                 <div class="comp-detail-header">
-                   <div class="comp-logo"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                   <h3>National Building Mockup Design</h3>
-                 </div>
-                 <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">NBMDC Civil Engineering Festival 2025 is a competition that will bring the theme <em>“Green Architectural Design to Achieve a Comfortable and Safe Residential Building”</em>.</p>
-                 
-                 <div class="comp-stats">
-                    <div class="stat-box">
-                      <span class="stat-label">Total Prize</span>
-                      <span class="stat-value">9+ Million Rupiah</span>
-                    </div>
-                    <div class="stat-box">
-                      <span class="stat-label">Registration Fee</span>
-                      <span class="stat-value">Rp. 150.000,00 / team</span>
-                    </div>
-                 </div>
-                 
-                 <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="https://bit.ly/NBMDC_CIVFEST2025" target="_blank" class="btn-primary">Register Now</a>
-                    <a href="https://drive.google.com/drive/folders/1a33ZC_AGo7sUwb4mPXzNavJ5Qjd3oY3P?usp=drive_link" target="_blank" class="btn-secondary">TOR Guide</a>
-                 </div>
-              </div>
-
-              <!-- NPTC -->
-              <div class="comp-detail-content" id="detail-nptc" style="display: none;">
-                 <div class="comp-detail-header">
-                   <div class="comp-logo"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                   <h3>National Project Tender</h3>
-                 </div>
-                 <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">NPTC Civil Engineering Festival 2025 is a competition that will bring the theme <em>“Construction Management Strategy in Realizing Economical and Resilient Infrastructure”</em>.</p>
-                 <div class="comp-stats">
-                    <div class="stat-box">
-                      <span class="stat-label">Total Prize</span>
-                      <span class="stat-value">9+ Million Rupiah</span>
-                    </div>
-                    <div class="stat-box">
-                      <span class="stat-label">Registration Fee</span>
-                      <span class="stat-value">Rp. 150.000,00 / team</span>
-                    </div>
-                 </div>
-                 <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="https://bit.ly/NBMDC_CIVFEST2025" target="_blank" class="btn-primary">Register Now</a>
-                    <a href="#" class="btn-secondary">TOR Guide</a>
-                 </div>
-              </div>
-
-              <!-- NBDC -->
-              <div class="comp-detail-content" id="detail-nbdc" style="display: none;">
-                 <div class="comp-detail-header">
-                   <div class="comp-logo"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                   <h3>National Bridge Design</h3>
-                 </div>
-                 <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">NBDC Civil Engineering Festival 2025 is a competition that will bring the theme <em>“Bridge Design and Innovation Strategies for Future Resiliency”</em>.</p>
-                 <div class="comp-stats">
-                    <div class="stat-box">
-                      <span class="stat-label">Total Prize</span>
-                      <span class="stat-value">9+ Million Rupiah</span>
-                    </div>
-                    <div class="stat-box">
-                      <span class="stat-label">Registration Fee</span>
-                      <span class="stat-value">Rp. 150.000,00 / team</span>
-                    </div>
-                 </div>
-                 <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="https://bit.ly/NBMDC_CIVFEST2025" target="_blank" class="btn-primary">Register Now</a>
-                    <a href="#" class="btn-secondary">TOR Guide</a>
-                 </div>
-              </div>
-
-              <!-- NCC -->
-              <div class="comp-detail-content" id="detail-ncc" style="display: none;">
-                 <div class="comp-detail-header">
-                   <div class="comp-logo"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                   <h3>National Concrete Competition</h3>
-                 </div>
-                 <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">NCC Civil Engineering Festival 2025 is a competition that will bring the theme <em>"Fiber Potential Innovation to Create an Improvement Concrete Construction"</em>.</p>
-                 <div class="comp-stats">
-                    <div class="stat-box">
-                      <span class="stat-label">Total Prize</span>
-                      <span class="stat-value">9+ Million Rupiah</span>
-                    </div>
-                    <div class="stat-box">
-                      <span class="stat-label">Registration Fee</span>
-                      <span class="stat-value">Rp. 150.000,00 / team</span>
-                    </div>
-                 </div>
-                 <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="https://bit.ly/NBMDC_CIVFEST2025" target="_blank" class="btn-primary">Register Now</a>
-                    <a href="#" class="btn-secondary">TOR Guide</a>
-                 </div>
-              </div>
-
+</div>
+<!-- Detail View -->
+<div id="comp-detail-view" style="display: none;">
+              <button class="btn-secondary" id="comp-back-btn" style="padding: 0.4rem 1rem; margin-bottom: 2rem; font-size: 0.8rem;">← Back to List</button>
               <!-- NBC -->
               <div class="comp-detail-content" id="detail-nbc" style="display: none;">
-                 <div class="comp-detail-header">
-                   <div class="comp-logo"><img src="/placeholder-logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.5;" /></div>
-                   <h3>National BIM Competition</h3>
-                 </div>
-                 <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">NBC Civil Engineering Festival 2025 is a competition that will bring the theme <em>"BIM Optimization of Building Design to Advancing Infrastructure Resiliency and Sustainability"</em>.</p>
-                 <div class="comp-stats">
-                    <div class="stat-box">
-                      <span class="stat-label">Total Prize</span>
-                      <span class="stat-value">9+ Million Rupiah</span>
-                    </div>
-                    <div class="stat-box">
-                      <span class="stat-label">Registration Fee</span>
-                      <span class="stat-value">Rp. 150.000,00 / team</span>
-                    </div>
-                 </div>
-                 <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="https://bit.ly/NBMDC_CIVFEST2025" target="_blank" class="btn-primary">Register Now</a>
-                    <a href="#" class="btn-secondary">TOR Guide</a>
-                 </div>
-              </div>
-
+<div class="comp-detail-header">
+<div class="comp-logo"><img alt="NBC Logo" src="/lombatra/NBC.png"/></div>
+<h3>National BIM Competition</h3>
+</div>
+<p style="margin-bottom: 0.75rem; border-left: 2px solid var(--color-border); padding-left: 1rem; margin-bottom: 0.5rem;">The <strong>National BIM Competition (NBC)</strong> is a national-scale competition open to active undergraduate students in Civil Engineering programs across Indonesia. It serves as a platform for participants to channel their creativity and innovation in designing building structures using Building Information Modeling (BIM) technology.</p>
+<p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">Theme: <em>"Green Building Design through BIM for a Sustainable Future"</em></p>
+<div class="comp-stats">
+<div class="stat-box">
+<span class="stat-label">Total Prize</span>
+<span class="stat-value">9+ Million Rupiah</span>
+</div>
+<div class="stat-box">
+<span class="stat-label">Registration Fee</span>
+<span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+</div>
+</div>
+<div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+<a class="btn-primary" href="https://bit.ly/FormulirPendaftaranNBC2026" target="_blank">Register Now</a>
+<a class="btn-secondary" href="https://bit.ly/LombaCivfest2026" target="_blank">TOR Guide</a>
+</div>
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); text-align: left; width: 100%;">
+<h4 style="margin-bottom: 1rem; color: var(--color-text-main); font-size: 1.1rem;">Contact Person</h4>
+<div style="display: flex; flex-direction: column; gap: 0.8rem;">
+<a href="https://wa.me/6285155351228" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Aliah Murti (0851-5535-1228)
+</a>
+<a href="https://wa.me/6282138257161" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Tunzu (0821-3825-7161)
+</a>
+</div>
+</div>
+</div>
+              <!-- NBDC -->
+              <div class="comp-detail-content" id="detail-nbdc" style="display: none;">
+<div class="comp-detail-header">
+<div class="comp-logo"><img alt="NBDC Logo" src="/lombatra/NBDC.png"/></div>
+<h3>National Bridge Design</h3>
+</div>
+<p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">The <strong>National Bridge Design Competition (NBDC)</strong> is a competition that serves as a platform for Civil Engineering students to develop their creativity, innovation, and inspiration in designing bridge structures. This year, the competition is integrated with the Green Building concept, encouraging participants to incorporate sustainable principles into their bridge design solutions.</p>
+<p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">Theme: <em>“Transforming the Future Through Sustainable Green Infrastructure Innovation”</em></p>
+<div class="comp-stats">
+<div class="stat-box">
+<span class="stat-label">Total Prize</span>
+<span class="stat-value">9+ Million Rupiah</span>
+</div>
+<div class="stat-box">
+<span class="stat-label">Registration Fee</span>
+<span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+</div>
+</div>
+<div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+<a class="btn-primary" href="https://bit.ly/NBDC_CIVFEST2026" target="_blank">Register Now</a>
+<a class="btn-secondary" href="https://bit.ly/LombaCivfest2026" target="_blank">TOR Guide</a>
+</div>
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); text-align: left; width: 100%;">
+<h4 style="margin-bottom: 1rem; color: var(--color-text-main); font-size: 1.1rem;">Contact Person</h4>
+<div style="display: flex; flex-direction: column; gap: 0.8rem;">
+<a href="https://wa.me/62881024567474" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Prawira Danakusumah (0881-0245-67474)
+</a>
+<a href="https://wa.me/62895337951424" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Nur Afni Febriyanti (0895-3379-51424)
+</a>
+</div>
+</div>
+</div>
+              <!-- NPTC -->
+              <div class="comp-detail-content" id="detail-nptc" style="display: none;">
+<div class="comp-detail-header">
+<div class="comp-logo"><img alt="NPTC Logo" src="/lombatra/NPTC.png" style="transform: scale(1.5);"/></div>
+<h3>National Project Tender</h3>
+</div>
+<p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">The <strong>National Project Tender Competition (NPTC)</strong> is a national-scale competition open to active undergraduate students in Civil Engineering programs across Indonesia. The competition challenges participants to demonstrate their creativity and innovation in developing efficient construction project tender strategies, with a focus on cost-effectiveness, time management, and quality assurance.</p>
+<p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">Theme: <em>"Smart Construction Management to Create Efficient and Green Infrastructure"</em></p>
+<div class="comp-stats">
+<div class="stat-box">
+<span class="stat-label">Total Prize</span>
+<span class="stat-value">9+ Million Rupiah</span>
+</div>
+<div class="stat-box">
+<span class="stat-label">Registration Fee</span>
+<span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+</div>
+</div>
+<div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+<a class="btn-primary" href="https://bit.ly/NPTC_CIVFEST2026" target="_blank">Register Now</a>
+<a class="btn-secondary" href="https://bit.ly/LombaCivfest2026" target="_blank">TOR Guide</a>
+</div>
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); text-align: left; width: 100%;">
+<h4 style="margin-bottom: 1rem; color: var(--color-text-main); font-size: 1.1rem;">Contact Person</h4>
+<div style="display: flex; flex-direction: column; gap: 0.8rem;">
+<a href="https://wa.me/6285697004122" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Khaleda Ziahunisa (0856-9700-4122)
+</a>
+<a href="https://wa.me/6281212942963" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Lubna Syamilah (0812-1294-2963)
+</a>
+</div>
+</div>
+</div>
+              <!-- NCC -->
+              <div class="comp-detail-content" id="detail-ncc" style="display: none;">
+<div class="comp-detail-header">
+<div class="comp-logo"><img alt="NCC Logo" src="/lombatra/NCC.png" style="transform: scale(1.5);"/></div>
+<h3>National Concrete Competition</h3>
+</div>
+<p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">The <strong>National Concrete Competition (NCC)</strong> is a competition that provides Civil Engineering students with a platform to develop their creativity, innovation, and efficiency in designing high-strength concrete mixtures. Participants are challenged to enhance the mechanical properties of concrete by incorporating recycled materials into the mix design.</p>
+<p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">Theme: <em>"Exploration of Recycled Alternative Materials as Concrete Components"</em></p>
+<div class="comp-stats">
+<div class="stat-box">
+<span class="stat-label">Total Prize</span>
+<span class="stat-value">9+ Million Rupiah</span>
+</div>
+<div class="stat-box">
+<span class="stat-label">Registration Fee</span>
+<span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+</div>
+</div>
+<div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+<a class="btn-primary" href="https://bit.ly/PendaftaranNCCcivfest2026" target="_blank">Register Now</a>
+<a class="btn-secondary" href="https://bit.ly/LombaCivfest2026" target="_blank">TOR Guide</a>
+</div>
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); text-align: left; width: 100%;">
+<h4 style="margin-bottom: 1rem; color: var(--color-text-main); font-size: 1.1rem;">Contact Person</h4>
+<div style="display: flex; flex-direction: column; gap: 0.8rem;">
+<a href="https://wa.me/628989097658" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Vinta (0898-9097-658)
+</a>
+<a href="https://wa.me/62895320982300" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Dini (0895-3209-82300)
+</a>
+</div>
+</div>
+</div>
+              <!-- NBMDC -->
+              <div class="comp-detail-content" id="detail-nbmdc" style="display: none;">
+<div class="comp-detail-header">
+<div class="comp-logo"><img alt="NBMDC Logo" src="/lombatra/NBMDC.png" style="transform: scale(1.5);"/></div>
+<h3>National Building Mockup Design</h3>
+</div>
+<p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">The <strong>National Building Mockup Design Competition (NBMDC)</strong> is one of the competition events held by the Civil Engineering Festival 2026 (Civfest 2026), specifically open to Senior High School (SMA/SMK) students and equivalents. It serves as a platform for participants to develop and express their ideas and creativity in constructing a small-scale house model that showcases Architectural Design, with a strong emphasis on Green Building innovation as a response to the challenges of the future.</p>
+<p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">Theme: <em>"Green Building Design for Comfortable Future"</em></p>
+<div class="comp-stats">
+<div class="stat-box">
+<span class="stat-label">Total Prize</span>
+<span class="stat-value">6jt++</span>
+</div>
+<div class="stat-box">
+<span class="stat-label">Registration Fee</span>
+<span class="stat-value price-display" data-base-price="150000">Rp. 150.000,00 / team</span>
+</div>
+</div>
+<div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+<a class="btn-primary" href="https://bit.ly/Pendaftaran_NBMDC_Civfest2026" target="_blank">Register Now</a>
+<a class="btn-secondary" href="https://drive.google.com/drive/folders/1a33ZC_AGo7sUwb4mPXzNavJ5Qjd3oY3P?usp=drive_link" target="_blank">TOR Guide</a>
+</div>
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); text-align: left; width: 100%;">
+<h4 style="margin-bottom: 1rem; color: var(--color-text-main); font-size: 1.1rem;">Contact Person</h4>
+<div style="display: flex; flex-direction: column; gap: 0.8rem;">
+<a href="https://wa.me/6281286275314" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Rashad Margani (0812-8627-5314)
+</a>
+<a href="https://wa.me/6285778818051" target="_blank" style="color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+Juliana Wulandari (0857-7881-8051)
+</a>
+</div>
+</div>
+</div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-overlay" id="modal-seminar">
-        <div class="modal-content">
-          <button class="modal-close" data-close-modal>&times;</button>
-          <h2 class="modal-title">National Seminar</h2>
-          <div class="modal-body">
-            <p>Our interactive National Seminar brings leading practitioners and academics to discuss "Construction Management Strategy and Green Architectural Design" for a better infrastructure future.</p>
-            <div class="timeline-gallery" style="margin-bottom: 1.5rem;">
-              <div class="gallery-img" style="background: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500&auto=format&fit=crop') center/cover;"></div>
-              <div class="gallery-img" style="background: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=500&auto=format&fit=crop') center/cover;"></div>
-            </div>
-            <p>Registration is limited. Secure your seminar pass now!</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScy8_hkUwr0CNupEdhRCnDz9I3R_Wn2AGo6I5maBy0uEzO5-g/viewform" target="_blank" class="btn-primary no-transition">Register Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-overlay" id="modal-closing">
-        <div class="modal-content">
-          <button class="modal-close" data-close-modal>&times;</button>
-          <h2 class="modal-title">Closing & Awarding Night</h2>
-          <div class="modal-body">
-            <div class="timeline-gallery" style="margin-bottom: 1.5rem;">
-              <div class="gallery-img" style="background: url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500&auto=format&fit=crop') center/cover;"></div>
-              <div class="gallery-img" style="background: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&auto=format&fit=crop') center/cover;"></div>
-            </div>
-            <p>The culminating night of Civfest 2026! We will announce all competition winners, celebrate the hard work of participants, and end the night with special guest stars.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScsCVVbC12x-f5u27fwvqjRzC51NspqMUElBzEbhegZMVTgGw/viewform?usp=dialog" target="_blank" class="btn-primary no-transition">Grab Your Ticket</a>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container footer-container">
-        <div class="footer-info">
-          <h3>CIVFEST PNJ</h3>
-          <p>Himpunan Mahasiswa Sipil PNJ</p>
-          <p>Jl. Prof. DR. G.A. Siwabessy, Kampus Universitas Indonesia, Depok</p>
-        </div>
-        <div class="footer-contact">
-          <h4>Need Help?</h4>
-          <p>Pebi: <a href="https://wa.me/+6281184124" target="_blank" style="color: var(--color-accent); text-decoration: none;">WhatsApp</a></p>
-          <p>Nopal: <a href="https://wa.me/+6285648338" target="_blank" style="color: var(--color-accent); text-decoration: none;">WhatsApp</a></p>
-          <div class="social-links">
-            <a href="mailto:civfestpnj@gmail.com" title="Email">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </a>
-            <a href="https://www.instagram.com/civfest2025/" target="_blank" title="Instagram">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="https://www.tiktok.com/@civfest2025" target="_blank" title="TikTok">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Civil Engineering Festival PNJ. All Rights Reserved.</p>
-      </div>
-    </footer>
-
-    <!-- No need to manually include Font script if using standard fonts, but Vite handles style.css -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-seminar">
+<div class="modal-content">
+<button class="modal-close" data-close-modal="">×</button>
+<h2 class="modal-title">National Seminar</h2>
+<div class="modal-body">
+<p>The National Seminar is a series of events held to discuss specific topics or issues on a national scale, aiming to foster information exchange and collaboration among experts and stakeholders in various disciplines, with the theme Resilient and Healthy Cities: Building Sustainable Urban Infrastructure Toward Indonesia's Golden Era.</p>
+<div class="timeline-gallery" style="margin-bottom: 1.5rem;">
+<div class="gallery-img" style=""></div>
+<div class="gallery-img" style=""></div>
+</div>
+<p>Registration is limited. Secure your seminar pass now!</p>
+<a class="btn-primary no-transition" href="javascript:void(0)" style="opacity: 0.5; cursor: not-allowed;">TBA</a>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-closing">
+<div class="modal-content">
+<button class="modal-close" data-close-modal="">×</button>
+<h2 class="modal-title">Closing &amp; Awarding Night</h2>
+<div class="modal-body">
+<div class="timeline-gallery" style="margin-bottom: 1.5rem;">
+<div class="gallery-img" style=""></div>
+<div class="gallery-img" style=""></div>
+</div>
+<p>The culminating night of Civfest 2026! We will announce all competition winners, celebrate the hard work of participants, and end the night with special guest stars.</p>
+<a class="btn-primary no-transition" href="javascript:void(0)" style="opacity: 0.5; cursor: not-allowed;">TBA</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="footer">
+<div class="container footer-container">
+<div class="footer-info">
+<h3>CIVFEST PNJ</h3>
+<p>Himpunan Mahasiswa Sipil PNJ</p>
+<p>Jl. Prof. DR. G.A. Siwabessy, Kampus Universitas Indonesia, Depok</p>
+</div>
+<div class="footer-contact">
+<h4>Need Help?</h4>
+<p>Naufal Taufiqurrahman: <a href="https://wa.me/6289676893103" style="color: var(--color-accent); text-decoration: none;" target="_blank">0896-7689-3103</a></p>
+<p>Amelia Myra: <a href="https://wa.me/6281213561290" style="color: var(--color-accent); text-decoration: none;" target="_blank">0812-1356-1290</a></p>
+<div class="social-links">
+<a href="mailto:civfestpnj@gmail.com" title="Email">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+</a>
+<a href="https://www.instagram.com/civfest2026/" target="_blank" title="Instagram">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+</a>
+<a href="https://www.tiktok.com/@civfest2026" target="_blank" title="TikTok">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Civil Engineering Festival PNJ. All Rights Reserved.</p>
+</div>
+</footer>
+<!-- No need to manually include Font script if using standard fonts, but Vite handles style.css -->
+<script src="/src/main.js" type="module"></script>
+</body>
 </html>

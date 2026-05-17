@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivFest 2026 — Coming Soon</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #080808;
+      --green1: #11481c;
+      --green2: #2d7a1f;
+      --green3: #4caf2a;
+      --green4: #86be27;
+      --white: #ffffff;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      cursor: none;
+    }
+
+    /* CURSOR */
+    #cur {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green4);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    }
+
+    #curl {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(134, 190, 39, .45);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: left .18s cubic-bezier(.23, 1, .32, 1), top .18s cubic-bezier(.23, 1, .32, 1);
+    }
+
+    /* TRIANGLE CANVAS */
+    #tri {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* VIGNETTE */
+    #vig {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .75) 100%);
+    }
+
+    /* top & bottom black fade */
+    #fade-t {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, .9), transparent);
+    }
+
+    #fade-b {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(8, 8, 8, .95), transparent);
+    }
+
+    /* LEAF PARTICLES */
+    #ptcl {
+      position: fixed;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .lp {
+      position: absolute;
+      bottom: -50px;
+      opacity: 0;
+      animation: leafUp linear infinite;
+    }
+
+    @keyframes leafUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg);
+      }
+
+      8% {
+        opacity: .4;
+      }
+
+      90% {
+        opacity: .18;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-108vh) rotate(280deg);
+      }
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.4rem;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, .65), transparent);
+      opacity: 0;
+      transform: translateY(-14px);
+      animation: slideIn .7s .3s forwards;
+    }
+
+    .nb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nb img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(76, 175, 42, .55));
+    }
+
+    .nb-txt {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .nb-txt b {
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: var(--white);
+    }
+
+    .nb-txt small {
+      font-size: .57rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: var(--green3);
+    }
+
+    .nr {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .28);
+    }
+
+    /* MAIN */
+    #main {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5.5rem 2rem 4rem;
+      gap: 0;
+    }
+
+    /* LOGO */
+    .hl {
+      position: relative;
+      margin-bottom: 0.25rem;
+      opacity: 0;
+      transform: scale(.84) translateY(18px);
+      animation: popIn .9s .65s cubic-bezier(.34, 1.56, .64, 1) forwards;
+    }
+
+    .hl img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 26px rgba(76, 175, 42, .75)) drop-shadow(0 0 60px rgba(134, 190, 39, .3));
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 26px rgba(76, 175, 42, .75)) drop-shadow(0 0 60px rgba(134, 190, 39, .3));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 40px rgba(76, 175, 42, .95)) drop-shadow(0 0 80px rgba(134, 190, 39, .5));
+      }
+    }
+
+    .ring1,
+    .ring2 {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(134, 190, 39, .16);
+      animation: rp 3.5s ease-in-out infinite;
+    }
+
+    .ring1 {
+      inset: -14px;
+    }
+
+    .ring2 {
+      inset: -30px;
+      animation-delay: .7s;
+      border-color: rgba(134, 190, 39, .08);
+    }
+
+    @keyframes rp {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: .45
+      }
+    }
+
+    /* TAG */
+    .ev-tag {
+      font-size: clamp(0.5rem, 2vw, 0.6rem);
+      font-weight: 700;
+      letter-spacing: clamp(0.15em, 1vw, 0.35em);
+      line-height: 1.6;
+      text-transform: uppercase;
+      color: var(--green3);
+      margin-bottom: 0.9rem;
+      padding: 0 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: slideIn .6s .9s forwards;
+    }
+
+    .ev-tag::before,
+    .ev-tag::after {
+      content: '';
+      margin: 0 .5em;
+      opacity: .35;
+    }
+
+    /* TITLE */
+    h1 {
+      font-weight: 900;
+      font-size: clamp(3rem, 10.5vw, 8.8rem);
+      line-height: .87;
+      letter-spacing: -.015em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: slideIn .85s 1.05s forwards;
+    }
+
+    h1 .num {
+      display: block;
+      color: var(--green3);
+      font-size: .65em;
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+
+    h1 .num sup {
+      font-size: .42em;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+
+    /* DIVIDER */
+    .hdiv {
+      width: 0;
+      height: 2px;
+      margin: 1.5rem auto;
+      background: linear-gradient(90deg, transparent, var(--green3) 50%, transparent);
+      opacity: 0;
+      animation: growW .8s 1.35s forwards;
+    }
+
+    @keyframes growW {
+      to {
+        width: 200px;
+        opacity: .65
+      }
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      border: 1px solid rgba(134, 190, 39, .28);
+      background: rgba(134, 190, 39, .055);
+      padding: .4rem 1.3rem;
+      border-radius: 999px;
+      font-size: .63rem;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .65);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: slideIn .65s 1.5s forwards;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green3);
+      animation: dp 1.8s ease-in-out infinite;
+    }
+
+    @keyframes dp {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(1.7);
+        opacity: .55
+      }
+    }
+
+    /* TAGLINE */
+    .tgl {
+      margin-top: 1.1rem;
+      font-size: clamp(.65rem, 1.3vw, .8rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, .35);
+      letter-spacing: .04em;
+      max-width: 400px;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: slideIn .65s 1.7s forwards;
+    }
+
+    .tgl strong {
+      color: rgba(134, 190, 39, .8);
+      font-weight: 600;
+    }
+
+    /* LOADING */
+    .lw {
+      margin-top: 2.4rem;
+      width: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: slideIn .65s 1.9s forwards;
+    }
+
+    .lt {
+      width: 100%;
+      height: 1.5px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 99px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .lf {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--green1), var(--green2), var(--green3), var(--green4));
+      animation: lfa 2.8s cubic-bezier(.4, 0, .2, 1) 2.2s infinite;
+    }
+
+    .ls {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .9);
+      filter: blur(1.5px);
+      animation: lsa 2.8s cubic-bezier(.4, 0, .2, 1) 2.2s infinite;
+    }
+
+    @keyframes lfa {
+      0% {
+        width: 0%;
+        left: 0
+      }
+
+      55% {
+        width: 60%;
+        left: 0
+      }
+
+      100% {
+        width: 0%;
+        left: 100%
+      }
+    }
+
+    @keyframes lsa {
+      0% {
+        left: 0%
+      }
+
+      100% {
+        left: 97%
+      }
+    }
+
+    .ltxt {
+      font-size: .56rem;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .18);
+    }
+
+    .ld {
+      animation: ldb 1.4s ease-in-out infinite;
+      opacity: 0;
+    }
+
+    .ld:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .ld:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes ldb {
+      40% {
+        opacity: 1
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      display: flex;
+      justify-content: center;
+      padding: 1.3rem;
+      opacity: 0;
+      animation: slideIn .6s 2.2s forwards;
+    }
+
+    footer p {
+      font-size: .55rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .16);
+      font-weight: 500;
+    }
+
+    footer span {
+      color: rgba(76, 175, 42, .4);
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0)
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="public/logo.png">
+</head>
+
+<body>
+
+  <div id="cur"></div>
+  <div id="curl"></div>
+  <canvas id="tri"></canvas>
+  <div id="vig"></div>
+  <div id="fade-t"></div>
+  <div id="fade-b"></div>
+  <div id="ptcl"></div>
+
+
+
+  <div id="main">
+    <div class="hl">
+      <div class="ring2"></div>
+      <div class="ring1"></div>
+      <img src="logo.png" alt="CivFest Logo" />
+    </div>
+
+    <div class="ev-tag">Civil Engineering Festival Politeknik Negeri Jakarta</div>
+
+    <h1>
+      CIVFEST
+      <span class="num">11<sup>TH</sup></span>
+    </h1>
+
+    <div class="hdiv"></div>
+
+    <div class="badge">
+      <span class="dot"></span>
+      Coming Soon
+    </div>
+
+    <p class="tgl">
+      <strong>Transforming the Future through Sustainable Green Infrastructure Innovation</strong>
+    </p>
+
+    <div class="lw">
+      <div class="lt">
+        <div class="ls"></div>
+        <div class="lf"></div>
+      </div>
+      <div class="ltxt">
+        COMING SOON<span class="ld">.</span><span class="ld">.</span><span class="ld">.</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    /* CURSOR */
+    const cur = document.getElementById('cur'), curl = document.getElementById('curl');
+    let mx = 0, my = 0, lx = 0, ly = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      lx += (mx - lx) * .14; ly += (my - ly) * .14;
+      cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+      curl.style.left = lx + 'px'; curl.style.top = ly + 'px';
+      requestAnimationFrame(loop);
+    })();
+
+    /* TRIANGLE PATTERN — matching the original dark green mosaic */
+    const cv = document.getElementById('tri'), cx = cv.getContext('2d');
+
+    // Color pairs: each cell has 2 triangles
+    const palette = [
+      ['#0f2e12', '#0a1c0b'],
+      ['#152e14', '#0c2010'],
+      ['#1a4020', '#0e2812'],
+      ['#0d1f0e', '#091508'],
+      ['#1e4a22', '#132e15'],
+      ['#112614', '#0a1b0c'],
+      ['#163318', '#0f2511'],
+      ['#081208', '#060e06'],
+      ['#1c4420', '#122e14'],
+      ['#244f27', '#163519'],
+    ];
+
+    function hash(r, c, s) { return Math.abs((r * 73856093 ^ c * 19349663 ^ s * 83492791) % palette.length); }
+
+    function drawTri() {
+      cv.width = window.innerWidth; cv.height = window.innerHeight;
+      cx.clearRect(0, 0, cv.width, cv.height);
+      const S = 60;
+      const cols = Math.ceil(cv.width / S) + 1;
+      const rows = Math.ceil(cv.height / S) + 1;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = c * S, y = r * S;
+          const p = palette[hash(r, c, 0)];
+          const p2 = palette[hash(r, c, 1)];
+
+          // upper-left triangle
+          cx.fillStyle = p[0];
+          cx.beginPath();
+          cx.moveTo(x, y); cx.lineTo(x + S, y); cx.lineTo(x, y + S);
+          cx.closePath(); cx.fill();
+
+          // lower-right triangle
+          cx.fillStyle = p[1];
+          cx.beginPath();
+          cx.moveTo(x + S, y); cx.lineTo(x + S, y + S); cx.lineTo(x, y + S);
+          cx.closePath(); cx.fill();
+
+          // subtle edge lines
+          cx.strokeStyle = 'rgba(0,0,0,.3)';
+          cx.lineWidth = .5;
+          cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + S, y + S); cx.stroke();
+        }
+      }
+      // horizontal lines
+      cx.strokeStyle = 'rgba(0,0,0,.25)'; cx.lineWidth = .4;
+      for (let r = 0; r <= rows; r++) { cx.beginPath(); cx.moveTo(0, r * S); cx.lineTo(cv.width, r * S); cx.stroke(); }
+      for (let c = 0; c <= cols; c++) { cx.beginPath(); cx.moveTo(c * S, 0); cx.lineTo(c * S, cv.height); cx.stroke(); }
+    }
+
+    drawTri();
+    window.addEventListener('resize', drawTri);
+
+    // Very subtle shimmer pulse on canvas opacity
+    let t = 0;
+    (function shimmer() {
+      t += .006;
+      cv.style.opacity = (0.88 + Math.sin(t) * 0.05).toString();
+      requestAnimationFrame(shimmer);
+    })();
+
+    /* LEAF PARTICLES */
+    const pc = document.getElementById('ptcl');
+    const lc = ['#2d7a1f80', '#4caf2a60', '#86be2750', '#11481c70'];
+    function mkLeaf() {
+      const el = document.createElement('div'); el.className = 'lp';
+      const sz = 7 + Math.random() * 14;
+      const col = lc[Math.floor(Math.random() * lc.length)];
+      el.innerHTML = `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="${col}"><path d="M12 21C12 21 3 16 3 9.5C3 6 5.8 3 9 3C10.3 3 11.4 3.6 12 4C12.6 3.6 13.7 3 15 3C18.2 3 21 6 21 9.5C21 16 12 21 12 21Z"/></svg>`;
+      const l = Math.random() * 100, dur = 10 + Math.random() * 13, dly = Math.random() * 9;
+      el.style.cssText = `left:${l}%;animation-duration:${dur}s;animation-delay:${dly}s`;
+      pc.appendChild(el);
+      setTimeout(() => el.remove(), (dur + dly) * 1000);
+    }
+    for (let i = 0; i < 12; i++) mkLeaf();
+    setInterval(mkLeaf, 1900);
+
+    /* PARALLAX on logo */
+    const logo = document.querySelector('.hl');
+    document.addEventListener('mousemove', e => {
+      const dx = (e.clientX / window.innerWidth - .5) * 14;
+      const dy = (e.clientY / window.innerHeight - .5) * 14;
+      logo.style.transform = `translate(${dx}px,${dy}px)`;
+    });
+  </script>
+</body>
+
+</html>

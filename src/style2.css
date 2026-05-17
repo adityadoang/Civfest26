@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;900&display=swap');
 
 :root {
-  --bg-overlay: rgba(255, 255, 255, 0.05);
-  --bg-overlay-hover: rgba(255, 255, 255, 0.1);
-  --border-light: rgba(255, 255, 255, 0.15);
-  --border-lighter: rgba(255, 255, 255, 0.4);
+  --bg-overlay: var(--bg-overlay);
+  --bg-overlay-hover: var(--bg-overlay-hover);
+  --border-light: var(--border-light);
+  --border-lighter: var(--border-lighter);
   --color-primary: #39842a;    
   --color-primary-dark: #11481c; 
   --color-accent: #86be27;     
@@ -566,7 +566,7 @@ h1, h2, h3, h4 {
 }
 
 .comp-detail-content .comp-logo img {
-  transform: scale(1.2);
+  transform: scale(6.5);
 }
 
 .comp-detail-content p {
@@ -935,7 +935,6 @@ h1, h2, h3, h4 {
   
   .hero-buttons {
     flex-direction: column;
-    align-items: center;
     padding: 0;
   }
 }
@@ -1197,110 +1196,4 @@ h1, h2, h3, h4 {
 .countdown-box .label {
   font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase;
   letter-spacing: 1px; font-weight: 600;
-}
-
-/* Hero Background Canvas Styles */
-#tri, #vig, #fade-t, #fade-b, #ptcl {
-  position: absolute;
-  pointer-events: none;
-}
-#tri { inset: 0; z-index: 0; }
-#vig { inset: 0; z-index: 1; background: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .75) 100%); }
-#fade-t { top: 0; left: 0; right: 0; height: 30%; z-index: 2; background: linear-gradient(to bottom, rgba(8, 8, 8, .9), transparent); }
-#fade-b { bottom: 0; left: 0; right: 0; height: 35%; z-index: 2; background: linear-gradient(to top, rgba(8, 8, 8, .95), transparent); }
-
-/* Light Mode Overrides for Background Elements */
-[data-theme="light"] #vig { background: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(243, 244, 246, 0) 20%, rgba(243, 244, 246, .75) 100%); }
-[data-theme="light"] #fade-t { background: linear-gradient(to bottom, rgba(243, 244, 246, .9), transparent); }
-[data-theme="light"] #fade-b { background: linear-gradient(to top, rgba(243, 244, 246, .95), transparent); }
-
-#ptcl { inset: 0; z-index: 3; overflow: hidden; }
-.lp { position: absolute; bottom: -50px; opacity: 0; animation: leafUp linear infinite; }
-@keyframes leafUp {
-  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
-  8% { opacity: .4; }
-  90% { opacity: .18; }
-  100% { opacity: 0; transform: translateY(-108vh) rotate(280deg); }
-}
-
-/* About Logo Animations */
-.hl-container .hl {
-  transition: transform 0.1s ease-out;
-}
-
-.hl-container .breathe-logo {
-  filter: drop-shadow(0 0 26px rgba(76, 175, 42, .75)) drop-shadow(0 0 60px rgba(134, 190, 39, .3));
-  animation: breathe 4s ease-in-out infinite;
-}
-
-[data-theme="light"] .hl-container .breathe-logo {
-  filter: drop-shadow(0 0 26px rgba(43, 106, 31, .6)) drop-shadow(0 0 60px rgba(108, 160, 29, .25));
-  animation: breatheLight 4s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% { filter: drop-shadow(0 0 26px rgba(76, 175, 42, .75)) drop-shadow(0 0 60px rgba(134, 190, 39, .3)); }
-  50% { filter: drop-shadow(0 0 40px rgba(76, 175, 42, .95)) drop-shadow(0 0 80px rgba(134, 190, 39, .5)); }
-}
-
-@keyframes breatheLight {
-  0%, 100% { filter: drop-shadow(0 0 26px rgba(43, 106, 31, .6)) drop-shadow(0 0 60px rgba(108, 160, 29, .25)); }
-  50% { filter: drop-shadow(0 0 40px rgba(43, 106, 31, .8)) drop-shadow(0 0 80px rgba(108, 160, 29, .4)); }
-}
-
-.hl-container .ring1,
-.hl-container .ring2 {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(134, 190, 39, .16);
-  animation: rp 3.5s ease-in-out infinite;
-  z-index: 1;
-}
-
-.hl-container .ring1 { inset: -14px; }
-.hl-container .ring2 { inset: -30px; animation-delay: .7s; border-color: rgba(134, 190, 39, .08); }
-
-[data-theme="light"] .hl-container .ring1 { border-color: rgba(108, 160, 29, .25); }
-[data-theme="light"] .hl-container .ring2 { border-color: rgba(108, 160, 29, .15); }
-
-
-@keyframes rp {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: .45; }
-}
-
-/* Mobile: Reduce/disable jarring animations */
-@media (max-width: 768px) {
-  /* Stop ring pulse on mobile - causes visual jitter */
-  .hl-container .ring1,
-  .hl-container .ring2 {
-    animation: none;
-  }
-
-  /* Slow down breathe animation on mobile */
-  .hl-container .breathe-logo {
-    animation-duration: 8s;
-  }
-
-  /* Disable hover translate on comp logos on touch */
-  .glass-card:hover .comp-item-logo-placeholder {
-    transform: none;
-  }
-
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .hl-container .ring1,
-  .hl-container .ring2 {
-    animation: none;
-  }
 }

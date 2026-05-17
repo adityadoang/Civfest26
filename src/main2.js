@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const config = {
     phases: [
       { name: "Pre-Registration", start: new Date(0), end: new Date('2026-05-18T00:00:00+07:00') },
-      { name: "Early Bird Registration", start: new Date('2026-05-18T00:00:00+07:00'), end: new Date('2026-05-22T23:59:59+07:00') },
-      { name: "Wave 1 Registration", start: new Date('2026-05-23T00:00:00+07:00'), end: new Date('2026-05-24T23:59:59+07:00') },
+      { name: "Wave 1 Registration", start: new Date('2026-05-18T00:00:00+07:00'), end: new Date('2026-05-24T23:59:59+07:00') },
       { name: "Wave 2 Registration", start: new Date('2026-05-25T00:00:00+07:00'), end: new Date('2026-06-10T23:59:59+07:00') },
       { name: "Extended Registration", start: new Date('2026-06-11T00:00:00+07:00'), end: new Date('2026-06-14T23:59:59+07:00') }
     ]
@@ -17,12 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const now = new Date();
     if (now < config.phases[0].end) return { status: 'PRE', targetDate: config.phases[0].end, label: 'Opens In' };
     
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 3; i++) {
       if (now >= config.phases[i].start && now <= config.phases[i].end) {
-        if (i === 1) return { status: 'OPEN_EB', label: 'Early Bird Close In', targetDate: config.phases[1].end };
-        if (i === 2) return { status: 'OPEN_W1', label: 'Wave 1 Close In', targetDate: config.phases[2].end };
-        if (i === 3) return { status: 'OPEN_W2', label: 'Wave 2 Close In', targetDate: config.phases[3].end };
-        if (i === 4) return { status: 'OPEN_EXT', label: 'Extend Close In', targetDate: config.phases[4].end };
+        if (i === 1) return { status: 'OPEN_W1', label: 'Wave 1 Close In', targetDate: config.phases[1].end };
+        if (i === 2) return { status: 'OPEN_W2', label: 'Wave 2 Close In', targetDate: config.phases[2].end };
+        if (i === 3) return { status: 'OPEN_EXT', label: 'Extend Close In', targetDate: config.phases[3].end };
       }
     }
     return { status: 'CLOSED', label: 'Registration Closed', targetDate: null };
@@ -39,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     
-    const dict = { 'PRE': 'Registration Opens In:', 'OPEN_EB': 'Early Bird Closes In:', 'OPEN_W1': 'Wave 1 Closes In:', 'OPEN_W2': 'Wave 2 Closes In:', 'OPEN_EXT': 'Extension Period Closes In:' };
+    const dict = { 'PRE': 'Registration Opens In:', 'OPEN_W1': 'Wave 1 Closes In:', 'OPEN_W2': 'Wave 2 Closes In:', 'OPEN_EXT': 'Extension Period Closes In:' };
     badgeEl.textContent = dict[currentPhase.status];
     
     const target = currentPhase.targetDate.getTime();
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
              link.style.opacity = '0.5';
              link.style.cursor = 'not-allowed';
          } else {
-             const waveText = currentPhase.status === 'OPEN_EB' ? '(Early Bird)' : (currentPhase.status === 'OPEN_W1' ? '(Wave 1)' : (currentPhase.status === 'OPEN_W2' ? '(Wave 2)' : '(Extended)'));
+             const waveText = currentPhase.status === 'OPEN_W1' ? '(Wave 1)' : (currentPhase.status === 'OPEN_W2' ? '(Wave 2)' : '(Extended)');
              link.textContent = 'Register Now ' + waveText;
              link.href = link.dataset.targetLink;
              link.setAttribute('target', '_blank');
@@ -93,28 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
              link.style.cursor = 'pointer';
          }
       });
-  }
-  function updatePricesUI() {
-    const now = new Date();
-    const earlyBirdStart = new Date('2026-05-18T00:00:00+07:00');
-    const earlyBirdEnd = new Date('2026-05-22T23:59:59+07:00');
-    const isEarlyBird = now >= earlyBirdStart && now <= earlyBirdEnd;
-    
-    const priceElements = document.querySelectorAll('.price-display');
-    priceElements.forEach(el => {
-      const basePrice = parseInt(el.getAttribute('data-base-price'), 10);
-      if (isNaN(basePrice)) return;
-      
-      const discount = isEarlyBird ? 15000 : 0;
-      const finalPrice = basePrice - discount;
-      
-      const formattedPrice = finalPrice.toLocaleString('id-ID', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
-      
-      el.textContent = `Rp. ${formattedPrice} / team`;
-    });
   }
 
   const badgeEl = document.getElementById('phase-badge');
@@ -124,17 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
       setInterval(() => {
           updateTimerUI(badgeEl, gridEl);
           updateRegistrationButtons();
-          updatePricesUI();
       }, 1000);
       updateTimerUI(badgeEl, gridEl);
   } else {
-      setInterval(() => {
-          updateRegistrationButtons();
-          updatePricesUI();
-      }, 1000);
+      setInterval(updateRegistrationButtons, 1000);
   }
   updateRegistrationButtons();
-  updatePricesUI();
   
   // Theme Toggler
   const themeToggles = document.querySelectorAll('.theme-btn');
@@ -161,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeButton(newTheme);
-      window.dispatchEvent(new Event('themechanged'));
     });
   });
 
@@ -440,103 +410,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 3500);
     }
   });
-
-  // Hero Background Animations
-  const cv = document.getElementById('tri');
-  if (cv) {
-    const cx = cv.getContext('2d');
-    const darkPalette = [
-      ['#0f2e12', '#0a1c0b'], ['#152e14', '#0c2010'], ['#1a4020', '#0e2812'],
-      ['#0d1f0e', '#091508'], ['#1e4a22', '#132e15'], ['#112614', '#0a1b0c'],
-      ['#163318', '#0f2511'], ['#081208', '#060e06'], ['#1c4420', '#122e14'],
-      ['#244f27', '#163519'],
-    ];
-    const lightPalette = [
-      ['#eaf3eb', '#e0ece2'], ['#daefdd', '#d1e6d4'], ['#cee7d1', '#c4dec7'],
-      ['#f0f7f1', '#e8efe9'], ['#c1e5c5', '#b6dbba'], ['#e6f4e8', '#dcf0de'],
-      ['#ddefdf', '#d4e8d6'], ['#f5faf6', '#ecf3ed'], ['#cae8cd', '#bedec1'],
-      ['#b5dfb8', '#abdbaf'],
-    ];
-
-    function getPalette() {
-      return document.documentElement.getAttribute('data-theme') === 'light' ? lightPalette : darkPalette;
-    }
-
-    function hash(r, c, s, palette) { return Math.abs((r * 73856093 ^ c * 19349663 ^ s * 83492791) % palette.length); }
-    
-    function drawTri() {
-      const palette = getPalette();
-      const parent = cv.parentElement;
-      if (!parent) return;
-      cv.width = parent.clientWidth; cv.height = parent.clientHeight;
-      cx.clearRect(0, 0, cv.width, cv.height);
-      const S = 60;
-      const cols = Math.ceil(cv.width / S) + 1;
-      const rows = Math.ceil(cv.height / S) + 1;
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const x = c * S, y = r * S;
-          const p = palette[hash(r, c, 0, palette)];
-          const p2 = palette[hash(r, c, 1, palette)];
-          cx.fillStyle = p[0]; cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + S, y); cx.lineTo(x, y + S); cx.closePath(); cx.fill();
-          cx.fillStyle = p[1]; cx.beginPath(); cx.moveTo(x + S, y); cx.lineTo(x + S, y + S); cx.lineTo(x, y + S); cx.closePath(); cx.fill();
-          cx.strokeStyle = isLight ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,.3)'; 
-          cx.lineWidth = .5; cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + S, y + S); cx.stroke();
-        }
-      }
-      cx.strokeStyle = isLight ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,.25)'; cx.lineWidth = .4;
-      for (let r = 0; r <= rows; r++) { cx.beginPath(); cx.moveTo(0, r * S); cx.lineTo(cv.width, r * S); cx.stroke(); }
-      for (let c = 0; c <= cols; c++) { cx.beginPath(); cx.moveTo(c * S, 0); cx.lineTo(c * S, cv.height); cx.stroke(); }
-    }
-    
-    drawTri();
-    window.addEventListener('resize', drawTri);
-    window.addEventListener('themechanged', drawTri);
-    // Only run shimmer on non-mobile to prevent flickering
-    const isMobile = () => window.innerWidth <= 768 || ('ontouchstart' in window);
-    if (!isMobile()) {
-      let t = 0;
-      (function shimmer() {
-        t += .006;
-        cv.style.opacity = (0.88 + Math.sin(t) * 0.05).toString();
-        requestAnimationFrame(shimmer);
-      })();
-    }
-  }
-
-  const pc = document.getElementById('ptcl');
-  if (pc) {
-    const isMobileDevice = window.innerWidth <= 768 || ('ontouchstart' in window);
-    const lc = ['#2d7a1f80', '#4caf2a60', '#86be2750', '#11481c70'];
-    function mkLeaf() {
-      const el = document.createElement('div'); el.className = 'lp';
-      const sz = 7 + Math.random() * 14;
-      const col = lc[Math.floor(Math.random() * lc.length)];
-      el.innerHTML = `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="${col}"><path d="M12 21C12 21 3 16 3 9.5C3 6 5.8 3 9 3C10.3 3 11.4 3.6 12 4C12.6 3.6 13.7 3 15 3C18.2 3 21 6 21 9.5C21 16 12 21 12 21Z"/></svg>`;
-      const l = Math.random() * 100, dur = 10 + Math.random() * 13, dly = Math.random() * 9;
-      el.style.cssText = `left:${l}%;animation-duration:${dur}s;animation-delay:${dly}s`;
-      pc.appendChild(el);
-      setTimeout(() => el.remove(), (dur + dly) * 1000);
-    }
-    // Fewer particles on mobile to reduce jank
-    const initialCount = isMobileDevice ? 4 : 12;
-    const intervalMs = isMobileDevice ? 4000 : 1900;
-    for (let i = 0; i < initialCount; i++) mkLeaf();
-    setInterval(mkLeaf, intervalMs);
-  }
-
-  // Parallax on about logos — desktop only (no mouse on touch devices)
-  const hlLogos = document.querySelectorAll('.hl-container .hl');
-  const isTouch = ('ontouchstart' in window) || window.innerWidth <= 768;
-  if (hlLogos.length > 0 && !isTouch) {
-    document.addEventListener('mousemove', e => {
-      const dx = (e.clientX / window.innerWidth - 0.5) * 20;
-      const dy = (e.clientY / window.innerHeight - 0.5) * 20;
-      hlLogos.forEach(logo => {
-        logo.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-    });
-  }
 });
