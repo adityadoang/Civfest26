@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: "Pre-Registration", start: new Date(0), end: new Date('2026-05-18T00:00:00+07:00') },
       { name: "Early Bird Registration", start: new Date('2026-05-18T00:00:00+07:00'), end: new Date('2026-05-22T23:59:59+07:00') },
       { name: "Wave 1 Registration", start: new Date('2026-05-23T00:00:00+07:00'), end: new Date('2026-05-24T23:59:59+07:00') },
-      { name: "Wave 2 Registration", start: new Date('2026-05-25T00:00:00+07:00'), end: new Date('2026-06-10T23:59:59+07:00') },
-      { name: "Extended Registration", start: new Date('2026-06-11T00:00:00+07:00'), end: new Date('2026-06-14T23:59:59+07:00') }
+      { name: "Wave 2 Registration", start: new Date('2026-05-25T00:00:00+07:00'), end: new Date('2026-06-14T23:59:59+07:00') },
+      { name: "Extended Registration", start: new Date('2026-06-15T09:00:00+07:00'), end: new Date('2026-06-17T23:59:59+07:00') }
     ]
   };
 
