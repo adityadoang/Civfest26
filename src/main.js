@@ -5,27 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- REGISTRATION PHASE LOGIC ---
   const config = {
     phases: [
-      { name: "Pre-Registration", start: new Date(0), end: new Date('2026-05-18T00:00:00+07:00') },
-      { name: "Early Bird Registration", start: new Date('2026-05-18T00:00:00+07:00'), end: new Date('2026-05-22T23:59:59+07:00') },
-      { name: "Wave 1 Registration", start: new Date('2026-05-23T00:00:00+07:00'), end: new Date('2026-05-24T23:59:59+07:00') },
-      { name: "Wave 2 Registration", start: new Date('2026-05-25T00:00:00+07:00'), end: new Date('2026-06-14T23:59:59+07:00') },
-      { name: "Extended Registration", start: new Date('2026-06-15T09:00:00+07:00'), end: new Date('2026-06-17T23:59:59+07:00') }
+      { name: "Pre-Registration", start: new Date(0), end: new Date('2026-06-18T23:59:59+07:00') },
+      { name: "Early Bird", start: new Date('2026-06-19T00:00:00+07:00'), end: new Date('2026-06-25T23:59:59+07:00') },
+      { name: "Waiting Normal Sale", start: new Date('2026-06-26T00:00:00+07:00'), end: new Date('2026-07-04T23:59:59+07:00') },
+      { name: "Normal Sale", start: new Date('2026-07-05T00:00:00+07:00'), end: new Date('2026-07-14T23:59:59+07:00') },
+      { name: "Extended", start: new Date('2026-07-15T00:00:00+07:00'), end: new Date('2026-07-26T23:59:59+07:00') }
     ]
   };
 
   function getPhase() {
     const now = new Date();
-    if (now < config.phases[0].end) return { status: 'PRE', targetDate: config.phases[0].end, label: 'Opens In' };
+    if (now < config.phases[0].end) return { status: 'PRE', targetDate: config.phases[0].end };
     
-    for (let i = 1; i <= 4; i++) {
-      if (now >= config.phases[i].start && now <= config.phases[i].end) {
-        if (i === 1) return { status: 'OPEN_EB', label: 'Early Bird Close In', targetDate: config.phases[1].end };
-        if (i === 2) return { status: 'OPEN_W1', label: 'Wave 1 Close In', targetDate: config.phases[2].end };
-        if (i === 3) return { status: 'OPEN_W2', label: 'Wave 2 Close In', targetDate: config.phases[3].end };
-        if (i === 4) return { status: 'OPEN_EXT', label: 'Extend Close In', targetDate: config.phases[4].end };
-      }
-    }
-    return { status: 'CLOSED', label: 'Registration Closed', targetDate: null };
+    if (now >= config.phases[1].start && now <= config.phases[1].end) return { status: 'OPEN_EB', targetDate: config.phases[1].end };
+    if (now >= config.phases[2].start && now <= config.phases[2].end) return { status: 'WAIT_NORMAL', targetDate: config.phases[2].end };
+    if (now >= config.phases[3].start && now <= config.phases[3].end) return { status: 'OPEN_NORMAL', targetDate: config.phases[3].end };
+    if (now >= config.phases[4].start && now <= config.phases[4].end) return { status: 'OPEN_EXT', targetDate: config.phases[4].end };
+    
+    return { status: 'CLOSED', targetDate: null };
   }
 
   function updateTimerUI(badgeEl, gridEl) {
@@ -39,7 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     
-    const dict = { 'PRE': 'Registration Opens In:', 'OPEN_EB': 'Early Bird Closes In:', 'OPEN_W1': 'Wave 1 Closes In:', 'OPEN_W2': 'Wave 2 Closes In:', 'OPEN_EXT': 'Extension Period Closes In:' };
+    const dict = { 
+      'PRE': 'Registration Opens In:', 
+      'OPEN_EB': 'Early Bird Closes In:', 
+      'WAIT_NORMAL': 'Normal Sale Opens In:', 
+      'OPEN_NORMAL': 'Normal Sale Closes In:', 
+      'OPEN_EXT': 'Extension Period Closes In:' 
+    };
     badgeEl.textContent = dict[currentPhase.status];
     
     const target = currentPhase.targetDate.getTime();
@@ -66,14 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentPhase = getPhase();
       
       compLinks.forEach(link => {
-         // Exclude links that aren't for competition registration if any leaked in (in this case all btn-primary in modal are comp registers)
-         
          if (!link.dataset.targetLink) {
              link.dataset.targetLink = link.href;
          }
 
-         if (currentPhase.status === 'PRE') {
-             link.textContent = 'Opens May 18th';
+         if (currentPhase.status === 'PRE' || currentPhase.status === 'WAIT_NORMAL') {
+             link.textContent = currentPhase.status === 'PRE' ? 'Opens June 19th' : 'Opens July 5th';
              link.href = 'javascript:void(0)';
              link.removeAttribute('target');
              link.style.opacity = '0.5';
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
              link.style.opacity = '0.5';
              link.style.cursor = 'not-allowed';
          } else {
-             const waveText = currentPhase.status === 'OPEN_EB' ? '(Early Bird)' : (currentPhase.status === 'OPEN_W1' ? '(Wave 1)' : (currentPhase.status === 'OPEN_W2' ? '(Wave 2)' : '(Extended)'));
+             const waveText = currentPhase.status === 'OPEN_EB' ? '(Early Bird)' : (currentPhase.status === 'OPEN_NORMAL' ? '(Normal Sale)' : '(Extended)');
              link.textContent = 'Register Now ' + waveText;
              link.href = link.dataset.targetLink;
              link.setAttribute('target', '_blank');
@@ -94,10 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
          }
       });
   }
+
   function updatePricesUI() {
     const now = new Date();
-    const earlyBirdStart = new Date('2026-05-18T00:00:00+07:00');
-    const earlyBirdEnd = new Date('2026-05-22T23:59:59+07:00');
+    const earlyBirdStart = new Date('2026-06-19T00:00:00+07:00');
+    const earlyBirdEnd = new Date('2026-06-25T23:59:59+07:00');
     const isEarlyBird = now >= earlyBirdStart && now <= earlyBirdEnd;
     
     const priceElements = document.querySelectorAll('.price-display');
