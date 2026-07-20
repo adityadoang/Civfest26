@@ -14,8 +14,8 @@
   --color-bg-card: #141615; 
   --color-border: rgba(255, 255, 255, 0.12);
   
-  --color-gradient-1: rgba(57, 132, 42, 0.4);
-  --color-gradient-2: rgba(134, 190, 39, 0.2);
+  --color-gradient-1: rgba(134, 190, 39, 0.6);
+  --color-gradient-2: rgba(134, 190, 39, 0.4);
   
   --color-nav-bg: rgba(10, 11, 10, 0.8);
   --color-nav-scrolled: rgba(47, 51, 50, 0.85);
@@ -40,8 +40,8 @@
   --color-bg-card: #ffffff; 
   --color-border: rgba(0, 0, 0, 0.12);
   
-  --color-gradient-1: rgba(43, 106, 31, 0.2);
-  --color-gradient-2: rgba(108, 160, 29, 0.1);
+  --color-gradient-1: rgba(134, 190, 39, 0.4);
+  --color-gradient-2: rgba(134, 190, 39, 0.2);
   
   --color-nav-bg: rgba(255, 255, 255, 0.8);
   --color-nav-scrolled: rgba(243, 244, 246, 0.9);
